@@ -132,7 +132,6 @@ The analyst reviews and investigates the alert in TheHive.
 * VirusTotal threat intelligence enrichment
 * Automated TheHive incident creation
 * Automated analyst email notifications
-* MITRE ATT&CK technique mapping
 * End-to-end SOC orchestration
 
 ---
@@ -160,11 +159,13 @@ These configurations were manually implemented and tested to ensure reliable end
 * Established reliable webhook communication between Wazuh and Shuffle
 * Parsed Sysmon hash fields using regex
 * Passed variables between workflow actions
-* Integrated VirusTotal API lookups
+* Integrated VirusTotal API 
 * Built custom JSON templates for TheHive alerts
 * Resolved API schema and field mapping issues
 * Automated email-based incident escalation
-
+* Created and tested custom Wazuh detection rules using the Wazuh Rule Manager
+* Validated rule matching against Sysmon process creation events
+  
 ---
 
 ## Skills Demonstrated
@@ -180,23 +181,11 @@ These configurations were manually implemented and tested to ensure reliable end
 * API Integration
 * JSON Processing
 * Regex Development
-* MITRE ATT&CK Mapping
+* Custom Wazuh Rule Development
+* Rule Tuning & Alerting
 
 ---
 
-## Future Improvements
-
-* Multi-IOC enrichment (IPs, domains, URLs)
-* AbuseIPDB integration
-* AlienVault OTX integration
-* Slack / Microsoft Teams notifications
-* Automated case creation in TheHive
-* Threat scoring and prioritization
-* Automated containment workflows
-* Sigma rule integration
-
----
-
-## Outcome
+## End Result 
 
 Successfully developed an automated SOC workflow that detects malicious activity, enriches indicators with threat intelligence, creates incidents in TheHive, and notifies analysts automatically, reducing manual triage effort and improving incident response efficiency.
