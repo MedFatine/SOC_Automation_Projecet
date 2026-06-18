@@ -10,7 +10,7 @@ The solution integrates Wazuh SIEM, Sysmon, Shuffle SOAR, VirusTotal, TheHive, a
 
 ## Architecture Diagram
 
-![Architecture Diagram](images/soc-automation-diagram.png)
+![Architecture Diagram](images/diagram.png)
 
 ---
 
