@@ -8,6 +8,12 @@ The solution integrates Wazuh SIEM, Sysmon, Shuffle SOAR, VirusTotal, TheHive, a
 
 ---
 
+## Architecture Diagram
+
+![Architecture Diagram](images/soc-automation-diagram.png)
+
+---
+
 ## Project Objectives
 
 * Detect malicious activity using Sysmon and Wazuh
@@ -79,6 +85,18 @@ SOC Analyst Investigation
 
 ---
 
+## Lab Environment
+
+### Azure Virtual Machines
+
+![Azure VMs](images/azure-vms.png)
+
+### Wazuh Dashboard
+
+![Wazuh Dashboard](images/wazuh.png)
+
+---
+
 ## Detection Workflow
 
 ### Step 1 – Endpoint Monitoring
@@ -89,6 +107,10 @@ Sysmon monitors process creation events and generates Event ID 1 logs.
 
 Wazuh ingests Sysmon logs and applies custom detection rules designed to identify Mimikatz execution activity.
 
+#### Mimikatz Detection
+
+![Mimikatz Detection](images/mimikatz-wazuh-screenshot.png)
+
 ### Step 3 – Alert Forwarding
 
 Matching alerts are forwarded from Wazuh to Shuffle through a webhook integration.
@@ -96,6 +118,10 @@ Matching alerts are forwarded from Wazuh to Shuffle through a webhook integratio
 ### Step 4 – IOC Extraction
 
 Shuffle extracts the SHA256 hash from Sysmon event data using regex parsing.
+
+#### Shuffle SOAR Workflow
+
+![Shuffle Dashboard](images/shuffler-dashboard.png)
 
 ### Step 5 – Threat Intelligence Enrichment
 
@@ -112,6 +138,10 @@ Shuffle automatically creates a TheHive alert containing:
 * MITRE ATT&CK mapping
 * VirusTotal results
 * Original event details
+
+#### TheHive Alert
+
+![TheHive Alert](images/thehive-alert.png)
 
 ### Step 7 – Analyst Notification
 
@@ -140,14 +170,14 @@ The analyst reviews and investigates the alert in TheHive.
 
 This project required configuration and customization across multiple security platforms, including:
 
-- Wazuh custom detection rules
-- Wazuh integration configuration (ossec.conf)
-- Filebeat configuration and log forwarding
-- Sysmon event collection and monitoring
-- Shuffle webhook integrations
-- VirusTotal API integration
-- TheHive alert ingestion configuration
-- Linux service management and troubleshooting
+* Wazuh custom detection rules
+* Wazuh integration configuration (ossec.conf)
+* Filebeat configuration and log forwarding
+* Sysmon event collection and monitoring
+* Shuffle webhook integrations
+* VirusTotal API integration
+* TheHive alert ingestion configuration
+* Linux service management and troubleshooting
 
 These configurations were manually implemented and tested to ensure reliable end-to-end SOC automation.
 
@@ -159,13 +189,25 @@ These configurations were manually implemented and tested to ensure reliable end
 * Established reliable webhook communication between Wazuh and Shuffle
 * Parsed Sysmon hash fields using regex
 * Passed variables between workflow actions
-* Integrated VirusTotal API 
+* Integrated VirusTotal API
 * Built custom JSON templates for TheHive alerts
 * Resolved API schema and field mapping issues
 * Automated email-based incident escalation
 * Created and tested custom Wazuh detection rules using the Wazuh Rule Manager
 * Validated rule matching against Sysmon process creation events
-  
+
+---
+
+## Infrastructure Access
+
+### Wazuh Server Access
+
+![Wazuh SSH](images/powershell-ssh-wazuh.png)
+
+### TheHive Server Access
+
+![TheHive SSH](images/powershell-ssh-thehive.png)
+
 ---
 
 ## Skills Demonstrated
@@ -186,6 +228,6 @@ These configurations were manually implemented and tested to ensure reliable end
 
 ---
 
-## End Result 
+## End Result
 
 Successfully developed an automated SOC workflow that detects malicious activity, enriches indicators with threat intelligence, creates incidents in TheHive, and notifies analysts automatically, reducing manual triage effort and improving incident response efficiency.
